@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="container">
             <img src="../logo.png" className="logo" />
-            <h1>Send us a recording of a cough sound</h1>
+            <h1>Send us a recording of your cough sound</h1>
             <AudioRecorder />
         </div>
     );
