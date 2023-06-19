@@ -28,3 +28,6 @@ dist-ssr
 *.sqlite3
 *.pyc
 *.h5
+
+/whatevershit
+/django_backend/audio_input/conv2D.h5

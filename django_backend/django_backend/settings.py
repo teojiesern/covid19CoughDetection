@@ -124,6 +124,7 @@ STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173', 
+    'https://erkherk.netlify.app'
 ]
 
 CORS_ALLOW_HEADERS = [

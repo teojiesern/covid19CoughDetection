@@ -4,6 +4,8 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import AudioRecorder from "./AudioRecorder";
 
+//python manage.py runserver
+//source whatevershit/Scripts/activate
 function App() {
     return (
         <div className="container">
