@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-const mimeType = "audio/webm";
+const mimeType = "audio/wav";
 const AudioRecorder = () => {
     const [permission, setPermission] = useState(false);
     const mediaRecorder = useRef(null);
@@ -49,13 +49,39 @@ const AudioRecorder = () => {
         mediaRecorder.current.onstop = () => {
             //creates a blob file from the audiochunks data
             const audioBlob = new Blob(audioChunks, { type: mimeType });
-            console.log(audioBlob);
+            sendAudioDataToBackend(audioBlob);
             //creates a playable URL from the blob file.
             const audioUrl = URL.createObjectURL(audioBlob);
             setAudio(audioUrl);
             setAudioChunks([]);
         };
     };
+
+    const sendAudioDataToBackend = async (audioBlob) => {
+        console.log(audioBlob)
+      
+        try {
+            const response = await fetch('http://127.0.0.1:8000/app/api/audio-input/', {
+                method: 'POST',
+                body: audioBlob,
+                headers: {
+                    'Content-Type': 'audio/wav',
+                },
+            });
+        
+            if (response.ok) {
+                const data = await response.json();
+                // Handle the response data here
+                console.log('Output:', data.output);
+                document.getElementById('output').innerText = 'Covid: ' + data.output[0][0].toFixed(2)*100 + '% | Healthy: ' + data.output[0][1].toFixed(2)*100 + '%';
+            } else {
+                console.log('Error:', response.status);
+            }
+        } catch (error) {
+            console.log('Error:', error.message);
+        }
+    };
+    
     return (
         <div>
             <h2>Audio Recorder</h2>

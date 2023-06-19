@@ -10,6 +10,7 @@ function App() {
             <img src="../logo.png" className="logo" />
             <h1>Send us a recording of your cough sound</h1>
             <AudioRecorder />
+            <h2 id="output"></h2>
         </div>
     );
 }
