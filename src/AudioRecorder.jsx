@@ -107,7 +107,7 @@ const AudioRecorder = () => {
     const sendAudioDataToBackend = async (audioBlob) => {
         try {
             const response = await fetch(
-                "http://127.0.0.1:8000/app/api/audio-input/",
+                "http://10.167.61.152:8000/app/api/audio-input/",
                 {
                     method: "POST",
                     body: audioBlob,
